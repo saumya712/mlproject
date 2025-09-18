@@ -8,6 +8,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.datatransformation import datatransformation
+from src.components.datatransformation import datatransformationconfig
+
 @dataclass
 class dataingestionconfig:
     train_data_path: str=os.path.join('artifacts',"train.csv")
@@ -21,7 +24,7 @@ class dataingestion:
     def initiate_data_ingestion(self):
         logging.info("entered the data ingetion method")
         try:
-            df=pd.read_csv('nootbbok\StudentsPerformance.csv')
+            df=pd.read_csv('nootbbok\\StudentsPerformance.csv')
             logging.info("read the dataset as dataframe")
             
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
@@ -48,4 +51,7 @@ class dataingestion:
         
 if __name__=="__main__":
             obj=dataingestion()
-            obj.initiate_data_ingestion()
+            train_data,tesr_data=obj.initiate_data_ingestion()
+            
+            data_transformation=datatransformation()
+            data_transformation.initiate_data_transfomation(train_data,tesr_data)
