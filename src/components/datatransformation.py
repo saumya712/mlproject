@@ -12,7 +12,7 @@ from sklearn.pipeline import Pipeline
 from src.exception import Customexception
 from src.logger import logging
 
-from src.utils import save_object
+from src.utils import save_object,evaluate_model
 
 
 @dataclass
