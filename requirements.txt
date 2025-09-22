@@ -7,4 +7,5 @@ lightgbm
 catboost
 dill
 flask
+gunicorn
 #-e .
